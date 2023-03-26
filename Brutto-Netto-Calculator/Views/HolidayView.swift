@@ -56,6 +56,6 @@ struct HolidayView: View {
     struct HolidayView_Previews: PreviewProvider {
         static var previews: some View {
             HolidayView()
-//                .preferredColorScheme(.light)
+                .preferredColorScheme(.dark)
         }
     }

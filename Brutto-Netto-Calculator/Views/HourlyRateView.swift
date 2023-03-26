@@ -216,5 +216,6 @@ struct HourlyRateView: View {
 struct HourlyRateView_Previews: PreviewProvider {
     static var previews: some View {
         HourlyRateView()
+			.preferredColorScheme(.dark)
     }
 }

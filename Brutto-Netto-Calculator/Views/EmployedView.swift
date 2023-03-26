@@ -267,6 +267,6 @@ struct EmployedView: View {
 struct EmployedView_Previews: PreviewProvider {
     static var previews: some View {
         EmployedView()
-//            .preferredColorScheme(.dark)
+            .preferredColorScheme(.dark)
     }
 }
