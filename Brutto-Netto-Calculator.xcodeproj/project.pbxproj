@@ -7,18 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C426A7A298F89F600DBA808 /* HolidayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C426A79298F89F600DBA808 /* HolidayView.swift */; };
+		9C4A10ED2990C43800A4A2BE /* DaysOffCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4A10EC2990C43800A4A2BE /* DaysOffCalculation.swift */; };
+		9CA8C8BB2998C06D006BFFE7 /* HourlyRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA8C8BA2998C06D006BFFE7 /* HourlyRateView.swift */; };
+		9CB7AF19298253B500DCCF3F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7AF18298253B500DCCF3F /* MainView.swift */; };
 		9CD4E51327685087000648B9 /* Brutto_Netto_CalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD4E51227685087000648B9 /* Brutto_Netto_CalculatorApp.swift */; };
-		9CD4E51527685087000648B9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD4E51427685087000648B9 /* ContentView.swift */; };
+		9CD4E51527685087000648B9 /* EmployedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD4E51427685087000648B9 /* EmployedView.swift */; };
 		9CD4E51727685089000648B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CD4E51627685089000648B9 /* Assets.xcassets */; };
 		9CD4E51A27685089000648B9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CD4E51927685089000648B9 /* Preview Assets.xcassets */; };
+		9CE34D40297FC79E002E58F3 /* FreelanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE34D3F297FC79E002E58F3 /* FreelanceView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9C426A79298F89F600DBA808 /* HolidayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayView.swift; sourceTree = "<group>"; };
+		9C4A10EC2990C43800A4A2BE /* DaysOffCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysOffCalculation.swift; sourceTree = "<group>"; };
+		9CA8C8BA2998C06D006BFFE7 /* HourlyRateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyRateView.swift; sourceTree = "<group>"; };
+		9CB7AF18298253B500DCCF3F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		9CD4E50F27685087000648B9 /* Brutto-Netto-Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Brutto-Netto-Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CD4E51227685087000648B9 /* Brutto_Netto_CalculatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brutto_Netto_CalculatorApp.swift; sourceTree = "<group>"; };
-		9CD4E51427685087000648B9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9CD4E51427685087000648B9 /* EmployedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployedView.swift; sourceTree = "<group>"; };
 		9CD4E51627685089000648B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9CD4E51927685089000648B9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9CE34D3F297FC79E002E58F3 /* FreelanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreelanceView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +42,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C4A10E92990C30B00A4A2BE /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				9C4A10EC2990C43800A4A2BE /* DaysOffCalculation.swift */,
+			);
+			path = Logic;
+			sourceTree = "<group>";
+		};
+		9CB7AF172982532500DCCF3F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9CB7AF18298253B500DCCF3F /* MainView.swift */,
+				9CD4E51427685087000648B9 /* EmployedView.swift */,
+				9CE34D3F297FC79E002E58F3 /* FreelanceView.swift */,
+				9CA8C8BA2998C06D006BFFE7 /* HourlyRateView.swift */,
+				9C426A79298F89F600DBA808 /* HolidayView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		9CD4E50627685087000648B9 = {
 			isa = PBXGroup;
 			children = (
@@ -51,8 +81,9 @@
 		9CD4E51127685087000648B9 /* Brutto-Netto-Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				9C4A10E92990C30B00A4A2BE /* Logic */,
+				9CB7AF172982532500DCCF3F /* Views */,
 				9CD4E51227685087000648B9 /* Brutto_Netto_CalculatorApp.swift */,
-				9CD4E51427685087000648B9 /* ContentView.swift */,
 				9CD4E51627685089000648B9 /* Assets.xcassets */,
 				9CD4E51827685089000648B9 /* Preview Content */,
 			);
@@ -137,7 +168,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CD4E51527685087000648B9 /* ContentView.swift in Sources */,
+				9CD4E51527685087000648B9 /* EmployedView.swift in Sources */,
+				9CB7AF19298253B500DCCF3F /* MainView.swift in Sources */,
+				9CA8C8BB2998C06D006BFFE7 /* HourlyRateView.swift in Sources */,
+				9C426A7A298F89F600DBA808 /* HolidayView.swift in Sources */,
+				9CE34D40297FC79E002E58F3 /* FreelanceView.swift in Sources */,
+				9C4A10ED2990C43800A4A2BE /* DaysOffCalculation.swift in Sources */,
 				9CD4E51327685087000648B9 /* Brutto_Netto_CalculatorApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -196,7 +232,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -251,7 +287,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -272,11 +308,13 @@
 				DEVELOPMENT_TEAM = 7AWNGA9WLD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Wage Calculator";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -301,11 +339,13 @@
 				DEVELOPMENT_TEAM = 7AWNGA9WLD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Wage Calculator";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

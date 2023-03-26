@@ -11,7 +11,7 @@ import SwiftUI
 struct Brutto_Netto_CalculatorApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
         }
     }
 }
