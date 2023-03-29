@@ -160,7 +160,7 @@ struct EmployedView: View {
                     .alert("Geef waardes in", isPresented: $showAlert) {}
                     .alert(self.netAmount.uppercased(), isPresented: $showNetSalary) {}
                 }
-                Spacer()
+//                Spacer()
             }
         }
     }
@@ -267,6 +267,6 @@ struct EmployedView: View {
 struct EmployedView_Previews: PreviewProvider {
     static var previews: some View {
         EmployedView()
-            .preferredColorScheme(.dark)
+//            .preferredColorScheme(.dark)
     }
 }

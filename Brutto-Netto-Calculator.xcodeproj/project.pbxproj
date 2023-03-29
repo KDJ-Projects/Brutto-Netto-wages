@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9C426A7A298F89F600DBA808 /* HolidayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C426A79298F89F600DBA808 /* HolidayView.swift */; };
+		9C426A7A298F89F600DBA808 /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C426A79298F89F600DBA808 /* InformationView.swift */; };
 		9C4A10ED2990C43800A4A2BE /* DaysOffCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4A10EC2990C43800A4A2BE /* DaysOffCalculation.swift */; };
 		9CA8C8BB2998C06D006BFFE7 /* HourlyRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA8C8BA2998C06D006BFFE7 /* HourlyRateView.swift */; };
 		9CB7AF19298253B500DCCF3F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7AF18298253B500DCCF3F /* MainView.swift */; };
@@ -19,7 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9C426A79298F89F600DBA808 /* HolidayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayView.swift; sourceTree = "<group>"; };
+		9C426A79298F89F600DBA808 /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
 		9C4A10EC2990C43800A4A2BE /* DaysOffCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysOffCalculation.swift; sourceTree = "<group>"; };
 		9CA8C8BA2998C06D006BFFE7 /* HourlyRateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyRateView.swift; sourceTree = "<group>"; };
 		9CB7AF18298253B500DCCF3F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -57,7 +57,7 @@
 				9CD4E51427685087000648B9 /* EmployedView.swift */,
 				9CE34D3F297FC79E002E58F3 /* FreelanceView.swift */,
 				9CA8C8BA2998C06D006BFFE7 /* HourlyRateView.swift */,
-				9C426A79298F89F600DBA808 /* HolidayView.swift */,
+				9C426A79298F89F600DBA808 /* InformationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -171,7 +171,7 @@
 				9CD4E51527685087000648B9 /* EmployedView.swift in Sources */,
 				9CB7AF19298253B500DCCF3F /* MainView.swift in Sources */,
 				9CA8C8BB2998C06D006BFFE7 /* HourlyRateView.swift in Sources */,
-				9C426A7A298F89F600DBA808 /* HolidayView.swift in Sources */,
+				9C426A7A298F89F600DBA808 /* InformationView.swift in Sources */,
 				9CE34D40297FC79E002E58F3 /* FreelanceView.swift in Sources */,
 				9C4A10ED2990C43800A4A2BE /* DaysOffCalculation.swift in Sources */,
 				9CD4E51327685087000648B9 /* Brutto_Netto_CalculatorApp.swift in Sources */,

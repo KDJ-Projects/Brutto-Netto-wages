@@ -145,7 +145,7 @@ struct FreelanceView: View {
                     })
                 }
                 
-                Spacer()
+//                Spacer()
             }
         }
     }
@@ -246,6 +246,6 @@ struct FreelanceView: View {
 struct FreelanceView_Previews: PreviewProvider {
     static var previews: some View {
         FreelanceView()
-			.preferredColorScheme(.dark)
+//			.preferredColorScheme(.dark)
     }
 }
