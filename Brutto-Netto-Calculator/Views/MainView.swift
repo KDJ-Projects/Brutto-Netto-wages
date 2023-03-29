@@ -23,7 +23,8 @@ struct MainView: View {
                             .scaledToFit()
                             .frame(width: 200, height: 200, alignment: .center)
                             .foregroundColor(buttonColor)
-                            .padding(.bottom, 40)
+							.padding(.top, 20)
+                            .padding(.bottom, 20)
                     }.padding()
                     
                     Spacer()
@@ -85,7 +86,7 @@ struct MainView: View {
 						)
                         
                         NavigationLink {
-                            HolidayView()
+                            InformationView()
                         } label: {
                             Text("Jaarinfo")
                         }
@@ -111,6 +112,7 @@ struct MainView: View {
                             .foregroundColor(.gray)
                             .font(.system(size: 10))
                             .fontWeight(.bold)
+							.padding(.bottom, 30)
                     }
                 }
             }
@@ -121,6 +123,6 @@ struct MainView: View {
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
-            .preferredColorScheme(.dark)
+//            .preferredColorScheme(.dark)
     }
 }

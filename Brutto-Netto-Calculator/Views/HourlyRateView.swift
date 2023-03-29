@@ -10,19 +10,32 @@ import SwiftUI
 struct HourlyRateView: View {
 	// MARK: Global variables
 	@State var totalWorkingDays: Double = 249.0
+	@State var totalWorkingHoursYear: Double = InformationView.totalWorkingHoursYear
 	@State var monthsInYear: Double = 12.0
 	@State var avererigeWorkDaysInMonth: Double = 20.75
-	@State var taxPercentage: Double = 0.21
-	@State var socialSecurityContribution: Double = 0.25
 	
 	// MARK: Input variables
-	@State private var preferedHourlyFee = ""
+	@State var preferedHourlyFee = ""
+	
+	// MARK: National social security amounts
+	// from 70857.99 up to 104422.24 deduction is 14.7%
+	@State var maxSocialSecurityContributionPercentage: Double = 0.205
+	@State var maxSocialSecurityContributionBracket: Double = 104422.24
+	// fore amounts up to 70857.99 diduction is 20.5%
+	@State var firstSocialSecurityContributionPercentage: Double = 0.147
+	@State var firstSocialSecurityContributionBracket: Double = 70857.99
+	
+	// MARK: Value added tax
+	@State var vatPercentage: Double = 0.21
+
+	// MARK: Lump sum of professional expenses
+	@State var lumpSumExpenses: Double = 3000.0
 	
 	// MARK: Tax brackets
-	@State private var taxBracket_25 = 0.25 // from 0.00 to 13.870,00
-	@State private var taxBracket_40 = 0.40 // from 13.870,00 to 24.480,00
-	@State private var taxBracket_45 = 0.45 // from 24.480,00 to 42.370,00
-	@State private var taxBrackte_50 = 0.50 // from 42.370,00 to ...
+	@State private var pesonalIncomeTaxBracket_25 = 0.25 // from 0.00 to 13.870,00
+	@State private var personalIncomeTaxBracket_40 = 0.40 // from 13.870,00 to 24.480,00
+	@State private var personalIncomeTaxBracket_45 = 0.45 // from 24.480,00 to 42.370,00
+	@State private var personalIncomeTaxBrackte_50 = 0.50 // from 42.370,00 to ...
 	
 	// MARK: Bottom sheet variables
 	@State private var showBottomSheet: Bool = false
@@ -34,6 +47,7 @@ struct HourlyRateView: View {
 	@State private var yearlyNetWage = ""
 	@State private var netMonthWage = ""
 	@State private var netDayWage = ""
+	@State private var MonthGrossWithTaxFee = ""
 		
 	// MARK: Color variables
 	@State private var textColor = Color.blue
@@ -87,54 +101,59 @@ struct HourlyRateView: View {
 						Capsule()
 							.stroke(buttonColor, lineWidth: 2.0)
 					)
-					.sheet(isPresented: $showBottomSheet, content: {
+					.sheet(isPresented: $showBottomSheet) {
 						List {
-							// Day section
-							Section {
-								Text("\(grossDayFee)")
-								Text("\(netDayWage)")
-									.foregroundColor(.green)
-							} header: {
-								Text("Dag bedrag")
-							}
+							// Day Section
+//							Section {
+//								Text("\(grossDayFee)")
+//								Text("\(netDayWage)")
+//									.foregroundColor(.green)
+//							} header: {
+//								Text("Dag bedrag")
+//							}
 							
-							// Month section
+							// Month Section
 							Section {
-								Text("\(grossMonthFee)")
+								Text("\(MonthGrossWithTaxFee)")
+									.foregroundColor(.red)
+								Text("\(grossMonthFee)") //MARK: aanpassen!
+									.foregroundColor(.blue)
+								
 								Text("\(netMonthWage)")
 									.foregroundColor(.green)
+								
 							} header: {
-								Text("Maand bedrag")
+								Text("Maand bedragen")
+									.foregroundColor(.red)
 							}
 							
-							// Year section
+							// Year Section
 							Section {
 								Text("\(grossYearFee)")
 								Text("\(grossSocialFee)")
 								Text("\(yearlyTaxDeduction)")
 								Text("\(yearlyNetWage)")
-									.foregroundColor(.green)
 							} header: {
-								Text("Jaar bedrag")
+								Text("Jaar bedragen")
+									.foregroundColor(.red)
 							}
 						}
-						.presentationDetents([.fraction(0.60)])
-					})
+						.presentationDetents([.fraction(0.65)])
+					}
 				}
 			}
 		}
     }
 	
+	
+	// MARK: CALCULATION SECTION
 	func calculateMonthlyWage() {
-		// MARK: Variables
-		
-		// MARK: Calculations
 		var calculateGrossDayWage: Double {
 			guard let m = Double(preferedHourlyFee),
 				  let n = Optional(Double(8.0)) else { return 0 }
 			return m * n
 		}
-		
+
 		var calculateGrossYearhWage: Double {
 			guard let m = Optional(calculateGrossDayWage),
 				  let n = Optional(totalWorkingDays) else { return 0 }
@@ -147,10 +166,17 @@ struct HourlyRateView: View {
 			return m / n
 		}
 		
+		var calculateGrossMonthWageWithTax: Double {
+			guard let m = Optional(calculateGrossMonthWage),
+				  let n = Optional(vatPercentage) else { return 0}
+			return (m * n) + m
+		}
+		
 		var calculateYearlySocialSecurityContribution: Double {
-			guard let m = Optional(socialSecurityContribution),
-				  let n = Optional(calculateGrossYearhWage) else { return 0 }
-			return (n * m)
+			guard let m = Optional(firstSocialSecurityContributionBracket * firstSocialSecurityContributionPercentage),
+				  let n = Optional((maxSocialSecurityContributionBracket - firstSocialSecurityContributionBracket) *
+				   maxSocialSecurityContributionPercentage) else { return 0 }
+			return m + n
 		}
 		
 		var calculateTaxableGrossYearWage: Double {
@@ -160,11 +186,12 @@ struct HourlyRateView: View {
 		}
 		
 		var calculateYearlyTaxDeduction: Double {
-			guard let m = Optional(taxBracket_25),
-				  let n = Optional(taxBracket_40),
-				  let o = Optional(taxBracket_45),
-				  let p = Optional(taxBrackte_50),
-				  let q = Optional(calculateTaxableGrossYearWage) else { return 0 }
+			guard let m = Optional(pesonalIncomeTaxBracket_25),
+				  let n = Optional(personalIncomeTaxBracket_40),
+				  let o = Optional(personalIncomeTaxBracket_45),
+				  let p = Optional(personalIncomeTaxBrackte_50),
+				  let r = Optional(lumpSumExpenses),
+				  let q = Optional(calculateTaxableGrossYearWage - r) else { return 0 }
 			return (13870.00 * m) + (10610.00 * n) + (17890.00 * o) + ((q - 42370.00) * p)
 		}
 		
@@ -186,36 +213,41 @@ struct HourlyRateView: View {
 			return m / n
 		}
 		
-		// MARK: Formatting
-		let formatDailyFee = String(format:"%.2f", calculateGrossDayWage)
-		self.grossDayFee = "Brutto dag bedrag: \(formatDailyFee) €"
+		// MARK: FORMATTING SECTION
+		// Day formating
+//		let formatDailyFee = String(format:"%.2f", calculateGrossDayWage)
+//		self.grossDayFee = "Brutto dag bedrag: \(formatDailyFee) €"
 		
-		let formatYearlyFee = String(format:"%.2f", calculateGrossYearhWage)
-		self.grossYearFee = "Brutto jaar bedrag: \(formatYearlyFee) €"
+//		let formatNetDayWage = String(format:"%.2f", calculateNetDayWage)
+//		self.netDayWage = "Netto dag loon: \(formatNetDayWage) €"
+
+		// Month formating
+		let formatMonthfeeWhitTax = String(format:"%.2f", calculateGrossMonthWageWithTax)
+		self.MonthGrossWithTaxFee = "Omzet + btw(21%): \(formatMonthfeeWhitTax) €"
 		
 		let formatMonthFee = String(format:"%.2f", calculateGrossMonthWage)
-		self.grossMonthFee = "Brutto maand bedrag: \(formatMonthFee) €"
-		
-		let formatYearlySocialSecurity = String(format:"%.2f", calculateYearlySocialSecurityContribution)
-		self.grossSocialFee = "Jaarlijkse RSZ bijdrage: \(formatYearlySocialSecurity) €"
-		
-		let formatYearlyTaxDeduction = String(format:"%.2f", calculateYearlyTaxDeduction)
-		self.yearlyTaxDeduction = "Jaarlijkse BTW bijdrage: \(formatYearlyTaxDeduction) €"
-		
-		let formatYearlyNetWage = String(format:"%.2f", calculateYearlyNetWage)
-		self.yearlyNetWage = "Jaarlijks netto loon: \(formatYearlyNetWage) €"
+		self.grossMonthFee = "Netto omzet: \(formatMonthFee) €"
 		
 		let formatNetMonthWage = String(format:"%.2f", calculateNetMonthWage)
-		self.netMonthWage = "Netto maand loon: \(formatNetMonthWage) €"
+		self.netMonthWage = "Netto inkomsten: \(formatNetMonthWage) €"
+
+		// Year fromating
+		let formatYearlyFee = String(format:"%.2f", calculateGrossYearhWage)
+		self.grossYearFee = "Brutto omzet: \(formatYearlyFee) €"
 		
-		let formatNetDayWage = String(format:"%.2f", calculateNetDayWage)
-		self.netDayWage = "Netto dag loon: \(formatNetDayWage) €"
+		let formatYearlySocialSecurity = String(format:"%.2f", calculateYearlySocialSecurityContribution)
+		self.grossSocialFee = "RSZ bijdrage: \(formatYearlySocialSecurity) €"
+		
+		let formatYearlyTaxDeduction = String(format:"%.2f", calculateYearlyTaxDeduction)
+		self.yearlyTaxDeduction = "Personen belasting: \(formatYearlyTaxDeduction) €"
+		
+		let formatYearlyNetWage = String(format:"%.2f", calculateYearlyNetWage)
+		self.yearlyNetWage = "Netto inkomsten: \(formatYearlyNetWage) €"
 	}
 }
 
 struct HourlyRateView_Previews: PreviewProvider {
     static var previews: some View {
         HourlyRateView()
-			.preferredColorScheme(.dark)
     }
 }
