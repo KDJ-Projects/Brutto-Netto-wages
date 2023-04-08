@@ -23,11 +23,6 @@ struct FreelanceView: View {
     @State private var monthVat = ""
     @State private var grossWithVat = ""
     
-    // Color variables
-    @State private var textColor = Color.blue
-    @State private var buttonColor = Color.blue
-    @State private var textFieldColor = Color.blue
-    
     var body: some View {
         ZStack {
             VStack {
@@ -36,18 +31,25 @@ struct FreelanceView: View {
 					VStack {
                         Text("MAANDBEREKENING")
                             .font(.largeTitle)
-                            .foregroundColor(textColor)
+							.foregroundColor(txt.textColor)
                         Text("FREELANCER")
                             .font(.largeTitle)
-                            .foregroundColor(textColor)
+							.foregroundColor(txt.textColor)
                     }
                 }.padding()
+				
+				HStack {
+					Image(systemName: "eurosign.circle")
+						.resizable()
+						.foregroundColor(.blue)
+						.frame(width: 200, height: 200)
+				}.padding(.bottom, 50)
                 
                 // Input prefered monthly pay
                 HStack {
                     Text("Gewenst maandelijks netto loon:")
                         .font(.body)
-                        .foregroundColor(textColor)
+						.foregroundColor(txt.textColor)
                         .bold()
                         .frame(width: 280, height: 10, alignment: .leading)
                         .padding(.leading, 50)
@@ -55,8 +57,8 @@ struct FreelanceView: View {
                     TextField("", text: $peferedNetSalary)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .keyboardType(.numbersAndPunctuation)
-                        .foregroundColor(textColor)
-                        .border(textFieldColor)
+						.foregroundColor(txt.textColor)
+						.border(txtf.textFieldColor)
                         .frame(width: 65, height: 10, alignment: .center)
                         .padding(.trailing, 50)
                 }.padding()
@@ -65,7 +67,7 @@ struct FreelanceView: View {
                 HStack {
                     Text("Aantal werk dagen per maand:")
                         .font(.body)
-                        .foregroundColor(textColor)
+						.foregroundColor(txt.textColor)
                         .bold()
                         .frame(width: 280, height: 10, alignment: .leading)
                         .padding(.leading, 50)
@@ -73,8 +75,8 @@ struct FreelanceView: View {
                     TextField("", text: $daysWorked)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .keyboardType(.numbersAndPunctuation)
-                        .foregroundColor(textColor)
-                        .border(textFieldColor)
+						.foregroundColor(txt.textColor)
+						.border(txtf.textFieldColor)
                         .frame(width: 65, height: 10, alignment: .center)
                         .padding(.trailing, 50)
                 }.padding()
@@ -83,7 +85,7 @@ struct FreelanceView: View {
                 HStack {
                     Text("Vaste maandelijkse vaste kosten:")
                         .font(.body)
-                        .foregroundColor(textColor)
+						.foregroundColor(txt.textColor)
                         .bold()
                         .frame(width: 280, height: 10, alignment: .leading)
                         .padding(.leading, 50)
@@ -91,8 +93,8 @@ struct FreelanceView: View {
                     TextField("", text: $monthlyFixedFee)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .keyboardType(.numbersAndPunctuation)
-                        .foregroundColor(textColor)
-                        .border(textFieldColor)
+						.foregroundColor(txt.textColor)
+						.border(txtf.textFieldColor)
                         .frame(width: 65, height: 10, alignment: .center)
                         .padding(.trailing, 50)
                 }.padding()
@@ -109,12 +111,12 @@ struct FreelanceView: View {
 						? showAlert.toggle() :  showBottomSheet.toggle()
                     }
                     .font(.largeTitle)
-                    .foregroundColor(textColor)
+					.foregroundColor(txt.textColor)
                     .frame(width: 280, height: 30, alignment: .center)
                     .padding()
                     .background(
                         Capsule()
-                            .stroke(buttonColor, lineWidth: 2.0)
+							.stroke(btn.buttonColor, lineWidth: 2.0)
                     )
                     .alert(isPresented: self.$showAlert) {
                         Alert(title: Text("Error"),

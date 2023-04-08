@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MainView: View {
     @State private var textColor =  Color.white
-    @State private var buttonColor = Color.blue
     
     var body: some View {
             
@@ -22,7 +21,7 @@ struct MainView: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width: 200, height: 200, alignment: .center)
-                            .foregroundColor(buttonColor)
+							.foregroundColor(btn.buttonColor)
 							.padding(.top, 20)
                             .padding(.bottom, 20)
                     }.padding()
@@ -40,13 +39,13 @@ struct MainView: View {
                         .fontWeight(.bold)
                         .font(.body)
                         .padding()
-                        .background(buttonColor)
+						.background(btn.buttonColor)
                         .cornerRadius(40)
                         .foregroundColor(textColor)
                         .padding(10)
                         .overlay(
                             RoundedRectangle(cornerRadius: 40)
-                                .stroke(buttonColor, lineWidth: 5)
+								.stroke(btn.buttonColor, lineWidth: 5)
                         )
                         
                         NavigationLink {
@@ -58,13 +57,13 @@ struct MainView: View {
                         .fontWeight(.bold)
                         .font(.body)
                         .padding()
-                        .background(buttonColor)
+						.background(btn.buttonColor)
                         .cornerRadius(40)
                         .foregroundColor(textColor)
                         .padding(10)
                         .overlay(
                             RoundedRectangle(cornerRadius: 40)
-                                .stroke(buttonColor, lineWidth: 5)
+								.stroke(btn.buttonColor, lineWidth: 5)
                         )
 						
 						NavigationLink {
@@ -76,31 +75,49 @@ struct MainView: View {
 						.fontWeight(.bold)
 						.font(.body)
 						.padding()
-						.background(buttonColor)
+						.background(btn.buttonColor)
 						.cornerRadius(40)
 						.foregroundColor(textColor)
 						.padding(10)
 						.overlay(
 							RoundedRectangle(cornerRadius: 40)
-								.stroke(buttonColor, lineWidth: 5)
+								.stroke(btn.buttonColor, lineWidth: 5)
+						)
+						
+						NavigationLink {
+							LeaseCarView()
+						} label: {
+							Text("Leasewagen")
+						}
+						.frame(width: 200)
+						.fontWeight(.bold)
+						.font(.body)
+						.padding()
+						.background(btn.buttonColor)
+						.cornerRadius(40)
+						.foregroundColor(textColor)
+						.padding(10)
+						.overlay(
+							RoundedRectangle(cornerRadius: 40)
+								.stroke(btn.buttonColor, lineWidth: 5)
 						)
                         
                         NavigationLink {
                             InformationView()
                         } label: {
-                            Text("Jaarinfo")
+                            Text("Informatie")
                         }
                         .frame(width: 200)
                         .fontWeight(.bold)
                         .font(.body)
                         .padding()
-                        .background(buttonColor)
+						.background(btn.buttonColor)
                         .cornerRadius(40)
                         .foregroundColor(textColor)
                         .padding(10)
                         .overlay(
                             RoundedRectangle(cornerRadius: 40)
-                                .stroke(buttonColor, lineWidth: 5)
+								.stroke(btn.buttonColor, lineWidth: 5)
                         )
                         
                         Spacer()

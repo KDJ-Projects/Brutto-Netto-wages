@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C3E9F3A29DD390B004D67D8 /* LeaseCarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3E9F3929DD390B004D67D8 /* LeaseCarView.swift */; };
+		9C3E9F3D29DE7AB6004D67D8 /* TwoDigitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3E9F3C29DE7AB6004D67D8 /* TwoDigitExtension.swift */; };
+		9C3E9F3F29DE7B35004D67D8 /* LeaseCarCalculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3E9F3E29DE7B35004D67D8 /* LeaseCarCalculations.swift */; };
 		9C426A7A298F89F600DBA808 /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C426A79298F89F600DBA808 /* InformationView.swift */; };
-		9C4A10ED2990C43800A4A2BE /* DaysOffCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4A10EC2990C43800A4A2BE /* DaysOffCalculation.swift */; };
+		9C470F0A29DA807600E18A0F /* TaxBracketHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C470F0929DA807600E18A0F /* TaxBracketHelper.swift */; };
+		9C470F0C29DA8A0500E18A0F /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C470F0B29DA8A0500E18A0F /* ColorHelper.swift */; };
+		9C470F0E29DA913800E18A0F /* DayMonthYearHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C470F0D29DA913800E18A0F /* DayMonthYearHelper.swift */; };
+		9C470F1029DA963500E18A0F /* SocialSecurityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C470F0F29DA963500E18A0F /* SocialSecurityHelper.swift */; };
 		9CA8C8BB2998C06D006BFFE7 /* HourlyRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA8C8BA2998C06D006BFFE7 /* HourlyRateView.swift */; };
 		9CB7AF19298253B500DCCF3F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7AF18298253B500DCCF3F /* MainView.swift */; };
 		9CD4E51327685087000648B9 /* Brutto_Netto_CalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD4E51227685087000648B9 /* Brutto_Netto_CalculatorApp.swift */; };
@@ -19,8 +25,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9C3E9F3929DD390B004D67D8 /* LeaseCarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaseCarView.swift; sourceTree = "<group>"; };
+		9C3E9F3C29DE7AB6004D67D8 /* TwoDigitExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoDigitExtension.swift; sourceTree = "<group>"; };
+		9C3E9F3E29DE7B35004D67D8 /* LeaseCarCalculations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaseCarCalculations.swift; sourceTree = "<group>"; };
 		9C426A79298F89F600DBA808 /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
-		9C4A10EC2990C43800A4A2BE /* DaysOffCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysOffCalculation.swift; sourceTree = "<group>"; };
+		9C470F0929DA807600E18A0F /* TaxBracketHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxBracketHelper.swift; sourceTree = "<group>"; };
+		9C470F0B29DA8A0500E18A0F /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
+		9C470F0D29DA913800E18A0F /* DayMonthYearHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayMonthYearHelper.swift; sourceTree = "<group>"; };
+		9C470F0F29DA963500E18A0F /* SocialSecurityHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialSecurityHelper.swift; sourceTree = "<group>"; };
 		9CA8C8BA2998C06D006BFFE7 /* HourlyRateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyRateView.swift; sourceTree = "<group>"; };
 		9CB7AF18298253B500DCCF3F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		9CD4E50F27685087000648B9 /* Brutto-Netto-Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Brutto-Netto-Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -42,12 +54,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9C4A10E92990C30B00A4A2BE /* Logic */ = {
+		9C3E9F3B29DE7A98004D67D8 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				9C4A10EC2990C43800A4A2BE /* DaysOffCalculation.swift */,
+				9C3E9F3C29DE7AB6004D67D8 /* TwoDigitExtension.swift */,
 			);
-			path = Logic;
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9C470F1329DAA9AE00E18A0F /* Calculations */ = {
+			isa = PBXGroup;
+			children = (
+				9C3E9F3E29DE7B35004D67D8 /* LeaseCarCalculations.swift */,
+			);
+			path = Calculations;
+			sourceTree = "<group>";
+		};
+		9C4A10E92990C30B00A4A2BE /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9C470F0929DA807600E18A0F /* TaxBracketHelper.swift */,
+				9C470F0B29DA8A0500E18A0F /* ColorHelper.swift */,
+				9C470F0D29DA913800E18A0F /* DayMonthYearHelper.swift */,
+				9C470F0F29DA963500E18A0F /* SocialSecurityHelper.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		9CB7AF172982532500DCCF3F /* Views */ = {
@@ -57,6 +88,7 @@
 				9CD4E51427685087000648B9 /* EmployedView.swift */,
 				9CE34D3F297FC79E002E58F3 /* FreelanceView.swift */,
 				9CA8C8BA2998C06D006BFFE7 /* HourlyRateView.swift */,
+				9C3E9F3929DD390B004D67D8 /* LeaseCarView.swift */,
 				9C426A79298F89F600DBA808 /* InformationView.swift */,
 			);
 			path = Views;
@@ -81,9 +113,11 @@
 		9CD4E51127685087000648B9 /* Brutto-Netto-Calculator */ = {
 			isa = PBXGroup;
 			children = (
-				9C4A10E92990C30B00A4A2BE /* Logic */,
-				9CB7AF172982532500DCCF3F /* Views */,
 				9CD4E51227685087000648B9 /* Brutto_Netto_CalculatorApp.swift */,
+				9C3E9F3B29DE7A98004D67D8 /* Extensions */,
+				9C470F1329DAA9AE00E18A0F /* Calculations */,
+				9C4A10E92990C30B00A4A2BE /* Helpers */,
+				9CB7AF172982532500DCCF3F /* Views */,
 				9CD4E51627685089000648B9 /* Assets.xcassets */,
 				9CD4E51827685089000648B9 /* Preview Content */,
 			);
@@ -168,12 +202,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C3E9F3F29DE7B35004D67D8 /* LeaseCarCalculations.swift in Sources */,
+				9C470F1029DA963500E18A0F /* SocialSecurityHelper.swift in Sources */,
+				9C470F0C29DA8A0500E18A0F /* ColorHelper.swift in Sources */,
+				9C3E9F3D29DE7AB6004D67D8 /* TwoDigitExtension.swift in Sources */,
 				9CD4E51527685087000648B9 /* EmployedView.swift in Sources */,
 				9CB7AF19298253B500DCCF3F /* MainView.swift in Sources */,
+				9C470F0E29DA913800E18A0F /* DayMonthYearHelper.swift in Sources */,
 				9CA8C8BB2998C06D006BFFE7 /* HourlyRateView.swift in Sources */,
 				9C426A7A298F89F600DBA808 /* InformationView.swift in Sources */,
+				9C470F0A29DA807600E18A0F /* TaxBracketHelper.swift in Sources */,
 				9CE34D40297FC79E002E58F3 /* FreelanceView.swift in Sources */,
-				9C4A10ED2990C43800A4A2BE /* DaysOffCalculation.swift in Sources */,
+				9C3E9F3A29DD390B004D67D8 /* LeaseCarView.swift in Sources */,
 				9CD4E51327685087000648B9 /* Brutto_Netto_CalculatorApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

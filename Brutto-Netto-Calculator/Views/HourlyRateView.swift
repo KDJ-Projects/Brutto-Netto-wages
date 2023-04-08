@@ -8,34 +8,11 @@
 import SwiftUI
 
 struct HourlyRateView: View {
-	// MARK: Global variables
-	@State var totalWorkingDays: Double = 249.0
-	@State var totalWorkingHoursYear: Double = InformationView.totalWorkingHoursYear
-	@State var monthsInYear: Double = 12.0
-	@State var avererigeWorkDaysInMonth: Double = 20.75
-	
 	// MARK: Input variables
 	@State var preferedHourlyFee = ""
-	
-	// MARK: National social security amounts
-	// from 70857.99 up to 104422.24 deduction is 14.7%
-	@State var maxSocialSecurityContributionPercentage: Double = 0.205
-	@State var maxSocialSecurityContributionBracket: Double = 104422.24
-	// fore amounts up to 70857.99 diduction is 20.5%
-	@State var firstSocialSecurityContributionPercentage: Double = 0.147
-	@State var firstSocialSecurityContributionBracket: Double = 70857.99
-	
-	// MARK: Value added tax
-	@State var vatPercentage: Double = 0.21
 
 	// MARK: Lump sum of professional expenses
 	@State var lumpSumExpenses: Double = 3000.0
-	
-	// MARK: Tax brackets
-	@State private var pesonalIncomeTaxBracket_25 = 0.25 // from 0.00 to 13.870,00
-	@State private var personalIncomeTaxBracket_40 = 0.40 // from 13.870,00 to 24.480,00
-	@State private var personalIncomeTaxBracket_45 = 0.45 // from 24.480,00 to 42.370,00
-	@State private var personalIncomeTaxBrackte_50 = 0.50 // from 42.370,00 to ...
 	
 	// MARK: Bottom sheet variables
 	@State private var showBottomSheet: Bool = false
@@ -48,11 +25,6 @@ struct HourlyRateView: View {
 	@State private var netMonthWage = ""
 	@State private var netDayWage = ""
 	@State private var MonthGrossWithTaxFee = ""
-		
-	// MARK: Color variables
-	@State private var textColor = Color.blue
-	@State private var buttonColor = Color.blue
-	@State private var textFieldColor = Color.blue
 	
     var body: some View {
 		ZStack {
@@ -61,27 +33,34 @@ struct HourlyRateView: View {
 				HStack {
 					Text("FREELANCE UURTARIEF")
 						.font(.largeTitle)
-						.foregroundColor(textColor)
+						.foregroundColor(txt.textColor)
+				}.padding(.bottom, 40)
+				
+				HStack {
+					Image(systemName: "eurosign.circle")
+						.resizable()
+						.foregroundColor(.blue)
+						.frame(width: 200, height: 200)
 				}.padding(.bottom, 50)
 				
 				// Input hourly rate
 				HStack {
 					Text("Gewenst uurloon:")
 						.font(.body)
-						.foregroundColor(textColor)
+						.foregroundColor(txt.textColor)
 						.bold()
 						.frame(width: 250, height: 10, alignment: .leading)
 					
 					TextField("", text: $preferedHourlyFee)
 						.textFieldStyle(RoundedBorderTextFieldStyle())
 						.keyboardType(.numbersAndPunctuation)
-						.foregroundColor(textColor)
-						.border(textFieldColor)
+						.foregroundColor(txt.textColor)
+						.border(txtf.textFieldColor)
 						.frame(width: 65, height: 10, alignment: .center)
 					
 					Text("€")
 							.font(.body)
-							.foregroundColor(textColor)
+							.foregroundColor(txt.textColor)
 							.bold()
 							.frame(width: 10, height: 10, alignment: .leading)
 				}.padding()
@@ -94,12 +73,12 @@ struct HourlyRateView: View {
 						showBottomSheet.toggle()
 					}
 					.font(.largeTitle)
-					.foregroundColor(textColor)
+					.foregroundColor(txt.textColor)
 					.frame(width: 280, height: 30, alignment: .center)
 					.padding()
 					.background(
 						Capsule()
-							.stroke(buttonColor, lineWidth: 2.0)
+							.stroke(btn.buttonColor, lineWidth: 2.0)
 					)
 					.sheet(isPresented: $showBottomSheet) {
 						List {
@@ -156,26 +135,26 @@ struct HourlyRateView: View {
 
 		var calculateGrossYearhWage: Double {
 			guard let m = Optional(calculateGrossDayWage),
-				  let n = Optional(totalWorkingDays) else { return 0 }
+				  let n = Optional(workingDays.workingDays) else { return 0 }
 			return m * n
 		}
 		
 		var calculateGrossMonthWage: Double {
 			guard let m = Optional(calculateGrossYearhWage),
-				  let n = Optional(Double(monthsInYear)) else { return 0 }
+				  let n = Optional(monthsInYear.monthsInYear) else { return 0 }
 			return m / n
 		}
 		
 		var calculateGrossMonthWageWithTax: Double {
 			guard let m = Optional(calculateGrossMonthWage),
-				  let n = Optional(vatPercentage) else { return 0}
+				  let n = Optional(vat.vatPercentage) else { return 0}
 			return (m * n) + m
 		}
 		
 		var calculateYearlySocialSecurityContribution: Double {
-			guard let m = Optional(firstSocialSecurityContributionBracket * firstSocialSecurityContributionPercentage),
-				  let n = Optional((maxSocialSecurityContributionBracket - firstSocialSecurityContributionBracket) *
-				   maxSocialSecurityContributionPercentage) else { return 0 }
+			guard let m = Optional(minBracket.minSocialBracket * minPercentage.minSocialPercentage),
+				  let n = Optional((maxBracket.maxSocialBracket - minBracket.minSocialBracket) *
+								   maxPercentage.maxSocialPercentage) else { return 0 }
 			return m + n
 		}
 		
@@ -186,10 +165,10 @@ struct HourlyRateView: View {
 		}
 		
 		var calculateYearlyTaxDeduction: Double {
-			guard let m = Optional(pesonalIncomeTaxBracket_25),
-				  let n = Optional(personalIncomeTaxBracket_40),
-				  let o = Optional(personalIncomeTaxBracket_45),
-				  let p = Optional(personalIncomeTaxBrackte_50),
+			guard let m = Optional(bracket25.tax_25),
+				  let n = Optional(bracket40.tax_40),
+				  let o = Optional(bracket45.tax_45),
+				  let p = Optional(bracket50.tax_50),
 				  let r = Optional(lumpSumExpenses),
 				  let q = Optional(calculateTaxableGrossYearWage - r) else { return 0 }
 			return (13870.00 * m) + (10610.00 * n) + (17890.00 * o) + ((q - 42370.00) * p)
@@ -203,13 +182,13 @@ struct HourlyRateView: View {
 		
 		var calculateNetMonthWage: Double {
 			guard let m = Optional(calculateYearlyNetWage),
-				  let n = Optional(monthsInYear) else { return 0 }
+				  let n = Optional(monthsInYear.monthsInYear) else { return 0 }
 			return m / n
 		}
 		
 		var calculateNetDayWage: Double {
 			guard let m = Optional(calculateNetMonthWage),
-				  let n = Optional(avererigeWorkDaysInMonth) else { return 0 }
+				  let n = Optional(averigeWorkingDaysMonth.averigeWorkingDaysMonth) else { return 0 }
 			return m / n
 		}
 		

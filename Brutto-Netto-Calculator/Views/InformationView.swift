@@ -30,9 +30,20 @@ struct InformationView: View {
 	static let lumpSumExpenses: Double = 3000 // Lumpsum of the yearly deductible professional expenses
 	static let lumpSumExpensesFormat = String(format: "%.0f", lumpSumExpenses)
 	
+	// Background color image
+	let imageBackgroundColor : Color = Color(red: 242/255, green: 242/255, blue: 247/255)
+	
     var body: some View {
         ZStack {
             VStack {
+				
+				HStack {
+					Image(systemName: "info.bubble")
+						.resizable()
+						.foregroundColor(.blue)
+						.frame(width: 200, height: 200)
+				}.padding(.bottom, 0)
+				
                 List {
                     Text("INFORMATIE 2023         ")
 						.multilineTextAlignment(.center)
@@ -70,6 +81,7 @@ struct InformationView: View {
 					}
                 }
             }
+			.background(imageBackgroundColor)
         }
     }
 }
