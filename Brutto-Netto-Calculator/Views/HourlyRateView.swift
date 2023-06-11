@@ -117,7 +117,8 @@ struct HourlyRateView: View {
 									.foregroundColor(.red)
 							}
 						}
-						.presentationDetents([.fraction(0.65)])
+						.presentationDetents([.fraction(0.50)])
+						.presentationDragIndicator(.visible)
 					}
 				}
 			}

@@ -81,7 +81,7 @@ struct InformationView: View {
 					}
                 }
             }
-			.background(imageBackgroundColor)
+//			.background(imageBackgroundColor)
         }
     }
 }

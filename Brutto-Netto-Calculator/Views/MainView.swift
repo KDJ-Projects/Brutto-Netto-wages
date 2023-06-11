@@ -23,7 +23,6 @@ struct MainView: View {
                             .frame(width: 200, height: 200, alignment: .center)
 							.foregroundColor(btn.buttonColor)
 							.padding(.top, 20)
-                            .padding(.bottom, 20)
                     }.padding()
                     
                     Spacer()
@@ -129,7 +128,7 @@ struct MainView: View {
                             .foregroundColor(.gray)
                             .font(.system(size: 10))
                             .fontWeight(.bold)
-							.padding(.bottom, 30)
+							.padding(.bottom, 40)
                     }
                 }
             }

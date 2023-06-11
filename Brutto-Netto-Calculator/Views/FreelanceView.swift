@@ -144,6 +144,7 @@ struct FreelanceView: View {
                         // .presentationDetents([.large, .medium, .fraction(0.75)])
                         //                        .presentationDetents([.medium])
                         .presentationDetents([.fraction(0.40)])
+						.presentationDragIndicator(.visible)
                     })
                 }
                 

@@ -21,6 +21,9 @@ struct LeaseCarView: View {
 	@State private var yearlytotalLeaseCost = ""
 	@State private var yearlyTotalFullCost = ""
 	@State private var totalcost = ""
+	@State private var dayCost = ""
+	
+	var workdays = InformationView.workingDaysInYear
 	
 	var body: some View {
 		ZStack {
@@ -42,7 +45,7 @@ struct LeaseCarView: View {
 				}.padding(.bottom, 50)
 				
 				HStack {
-					Text("Maand lease bedrag:")
+					Text("Maand bedrag leasewagen:")
 						.font(.body)
 						.foregroundColor(txt.textColor)
 						.bold()
@@ -63,7 +66,7 @@ struct LeaseCarView: View {
 				}.padding()
 				
 				HStack {
-					Text("Maand bezine bedrag:")
+					Text("Maand bedrag brandstof:")
 						.font(.body)
 						.foregroundColor(txt.textColor)
 						.bold()
@@ -88,8 +91,8 @@ struct LeaseCarView: View {
 				
 				HStack {
 					Button("Bereken".uppercased()) {
-						leaseCalculations()
 						showBottomSheet.toggle()
+						self.leaseCalculations()
 					}
 					.font(.largeTitle)
 					.foregroundColor(txt.textColor)
@@ -101,6 +104,15 @@ struct LeaseCarView: View {
 					)
 					.sheet(isPresented: $showBottomSheet) {
 						List {
+							// Day Section
+							Section {
+								Text("\(dayCost)")
+									.foregroundColor(.green)
+							} header: {
+								Text("Dag bedragen")
+									.foregroundColor(.blue)
+							}
+							
 							// Month Section
 							Section {
 								Text("\(monthTotalCost)")
@@ -125,7 +137,8 @@ struct LeaseCarView: View {
 									.foregroundColor(.blue)
 							}
 						}
-						.presentationDetents([.fraction(0.40)])
+						.presentationDetents([.fraction(0.45)])
+						.presentationDragIndicator(.visible)
 					}
 				}
 			}
@@ -159,16 +172,24 @@ struct LeaseCarView: View {
 			return (m + n).rounded(toPlaces: 2)
 		}
 		
+		var calculateDayCost: Double {
+			guard let m = Optional(workdays),
+				  let n = Optional(calculateTotalLeaseCost) else { return 0 }
+			return (n / Double(m)).rounded(toPlaces: 2)
+		}
+		
+		// Day formating
+		self.dayCost = "Per werkdag: \(calculateDayCost) €"
+		
 		// Month formating
-		self.monthTotalCost = "Maand kost: \(calculateMonthCost) €"
+		self.monthTotalCost = "Per maand: \(calculateMonthCost) €"
 		
 		// Year formating
-		self.yearlytotalLeaseCost = "Leasejaar bedrag: \(calculateTotalLeaseCost) €"
-		self.yearlyTotalFullCost = "Bezine jaar bedrag: \(calculateTotalFuelCost) €"
-		self.totalcost = "Totale jaar kost: \(calculateTotalYearCost) €"
+		self.yearlytotalLeaseCost = "Leasewagen: \(calculateTotalLeaseCost) €"
+		self.yearlyTotalFullCost = "Brandstof: \(calculateTotalFuelCost) €"
+		self.totalcost = "Totaal: \(calculateTotalYearCost) €"
 	}
 }
-
 
 struct LeaseCarView_Previews: PreviewProvider {
 	static var previews: some View {
