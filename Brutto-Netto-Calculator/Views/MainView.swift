@@ -20,14 +20,14 @@ struct MainView: View {
                         Image(systemName: "eurosign.square")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 200, height: 200, alignment: .center)
+                            .frame(width: 150, height: 150, alignment: .center)
 							.foregroundColor(btn.buttonColor)
-							.padding(.top, 20)
+							.padding(.top, 140)
                     }.padding()
                     
                     Spacer()
                     
-                    VStack(spacing: 50.0) {
+                    VStack(spacing: 40.0) {
                         
                         NavigationLink {
                             EmployedView()
@@ -123,12 +123,13 @@ struct MainView: View {
                     }
                     
                     /// footer section
-                    VStack {
-                        Text("®Created by KDJ | 2023")
+					VStack(spacing: 30) {
+                        Text("®Created by KDJ - Projects")
                             .foregroundColor(.gray)
                             .font(.system(size: 10))
                             .fontWeight(.bold)
-							.padding(.bottom, 40)
+							.padding(.bottom, 150)
+							.padding(.top, -30)
                     }
                 }
             }

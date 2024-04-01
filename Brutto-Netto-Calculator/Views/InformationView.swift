@@ -41,7 +41,7 @@ struct InformationView: View {
 					Image(systemName: "info.bubble")
 						.resizable()
 						.foregroundColor(.blue)
-						.frame(width: 200, height: 200)
+						.frame(width: 130, height: 130)
 				}.padding(.bottom, 0)
 				
                 List {
@@ -81,7 +81,7 @@ struct InformationView: View {
 					}
                 }
             }
-//			.background(imageBackgroundColor)
+			.background(imageBackgroundColor)
         }
     }
 }

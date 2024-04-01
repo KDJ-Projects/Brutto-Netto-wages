@@ -40,11 +40,11 @@ struct HourlyRateView: View {
 					Image(systemName: "eurosign.circle")
 						.resizable()
 						.foregroundColor(.blue)
-						.frame(width: 200, height: 200)
+						.frame(width: 130, height: 130)
 				}.padding(.bottom, 50)
 				
 				// Input hourly rate
-				HStack {
+				HStack (spacing: 1){
 					Text("Gewenst uurloon:")
 						.font(.body)
 						.foregroundColor(txt.textColor)
@@ -102,7 +102,7 @@ struct HourlyRateView: View {
 									.foregroundColor(.green)
 								
 							} header: {
-								Text("Maand bedragen")
+								Text("Maand omzet")
 									.foregroundColor(.red)
 							}
 							
@@ -113,11 +113,11 @@ struct HourlyRateView: View {
 								Text("\(yearlyTaxDeduction)")
 								Text("\(yearlyNetWage)")
 							} header: {
-								Text("Jaar bedragen")
+								Text("Jaar omzet")
 									.foregroundColor(.red)
 							}
 						}
-						.presentationDetents([.fraction(0.50)])
+						.presentationDetents([.fraction(0.60)])
 						.presentationDragIndicator(.visible)
 					}
 				}

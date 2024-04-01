@@ -25,7 +25,7 @@ struct EmployedView: View {
 		
 		ZStack {
 			
-			VStack {
+			VStack (spacing: 5) {
 				HStack {
 					VStack {
 						Text("MAANDBEREKENING")
@@ -41,10 +41,10 @@ struct EmployedView: View {
 					Image(systemName: "eurosign.circle")
 						.resizable()
 						.foregroundColor(.blue)
-						.frame(width: 200, height: 200)
+						.frame(width: 130, height: 130)
 				}.padding(.bottom, 40)
 				
-				HStack {
+				HStack (spacing: -10) {
 					Text("Brutto verloning:")
 						.font(.body)
 						.foregroundColor(txt.textColor)
@@ -61,7 +61,7 @@ struct EmployedView: View {
 						.padding(.trailing, 50)
 				}.padding()
 				
-				HStack {
+				HStack (spacing: -10) {
 					Text("Aantal gewerkte dagen:")
 						.font(.body)
 						.foregroundColor(txt.textColor)
@@ -78,7 +78,7 @@ struct EmployedView: View {
 						.padding(.trailing, 50)
 				}.padding()
 				
-				HStack {
+				HStack (spacing: -10) {
 					Text("Bedrag maaltijd vergoeding:")
 						.font(.body)
 						.foregroundColor(txt.textColor)
@@ -95,7 +95,7 @@ struct EmployedView: View {
 						.padding(.trailing, 50)
 				}.padding()
 				
-				HStack {
+				HStack (spacing: -10) {
 					Text("Bedrag baan vergoeding:")
 						.font(.body)
 						.foregroundColor(txt.textColor)
@@ -112,7 +112,7 @@ struct EmployedView: View {
 						.padding(.trailing, 50)
 				}.padding()
 				
-				HStack {
+				HStack (spacing: -10) {
 					Text("Vergoeding overige onkosten:")
 						.font(.body)
 						.foregroundColor(txt.textColor)
@@ -129,7 +129,7 @@ struct EmployedView: View {
 						.padding(.trailing, 50)
 				}.padding()
 				
-				HStack {
+				HStack (spacing: -10) {
 					Text("Voordeel alle aard (VAA):")
 						.font(.body)
 						.foregroundColor(txt.textColor)

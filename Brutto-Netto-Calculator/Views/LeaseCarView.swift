@@ -41,10 +41,10 @@ struct LeaseCarView: View {
 					Image(systemName: "car.circle")
 						.resizable()
 						.foregroundColor(.blue)
-						.frame(width: 200, height: 200)
+						.frame(width: 130, height: 130)
 				}.padding(.bottom, 50)
 				
-				HStack {
+				HStack (spacing: 1){
 					Text("Maand bedrag leasewagen:")
 						.font(.body)
 						.foregroundColor(txt.textColor)
@@ -65,7 +65,7 @@ struct LeaseCarView: View {
 						.frame(width: 10, height: 10, alignment: .leading)
 				}.padding()
 				
-				HStack {
+				HStack (spacing: 1){
 					Text("Maand bedrag brandstof:")
 						.font(.body)
 						.foregroundColor(txt.textColor)

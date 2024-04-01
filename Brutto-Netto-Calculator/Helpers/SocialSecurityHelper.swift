@@ -12,7 +12,7 @@ struct SocialSecurityHelper {
 	// from 70857.99 up to 104422.24 deduction is 14.7%
 	let minSocialPercentage: Double
 	let minSocialBracket: Double
-	// fore amounts up to 70857.99 diduction is 20.5%
+	// for amounts up to 70857.99 diduction is 20.5%
 	let maxSocialPercentage: Double
 	let maxSocialBracket: Double
 	
