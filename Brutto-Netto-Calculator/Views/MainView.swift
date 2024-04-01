@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MainView: View {
     @State private var textColor =  Color.white
-    @State private var buttonColor = Color.blue
     
     var body: some View {
             
@@ -21,15 +20,14 @@ struct MainView: View {
                         Image(systemName: "eurosign.square")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 200, height: 200, alignment: .center)
-                            .foregroundColor(buttonColor)
-							.padding(.top, 20)
-                            .padding(.bottom, 20)
+                            .frame(width: 150, height: 150, alignment: .center)
+							.foregroundColor(btn.buttonColor)
+							.padding(.top, 140)
                     }.padding()
                     
                     Spacer()
                     
-                    VStack(spacing: 50.0) {
+                    VStack(spacing: 40.0) {
                         
                         NavigationLink {
                             EmployedView()
@@ -40,13 +38,13 @@ struct MainView: View {
                         .fontWeight(.bold)
                         .font(.body)
                         .padding()
-                        .background(buttonColor)
+						.background(btn.buttonColor)
                         .cornerRadius(40)
                         .foregroundColor(textColor)
                         .padding(10)
                         .overlay(
                             RoundedRectangle(cornerRadius: 40)
-                                .stroke(buttonColor, lineWidth: 5)
+								.stroke(btn.buttonColor, lineWidth: 5)
                         )
                         
                         NavigationLink {
@@ -58,13 +56,13 @@ struct MainView: View {
                         .fontWeight(.bold)
                         .font(.body)
                         .padding()
-                        .background(buttonColor)
+						.background(btn.buttonColor)
                         .cornerRadius(40)
                         .foregroundColor(textColor)
                         .padding(10)
                         .overlay(
                             RoundedRectangle(cornerRadius: 40)
-                                .stroke(buttonColor, lineWidth: 5)
+								.stroke(btn.buttonColor, lineWidth: 5)
                         )
 						
 						NavigationLink {
@@ -76,43 +74,62 @@ struct MainView: View {
 						.fontWeight(.bold)
 						.font(.body)
 						.padding()
-						.background(buttonColor)
+						.background(btn.buttonColor)
 						.cornerRadius(40)
 						.foregroundColor(textColor)
 						.padding(10)
 						.overlay(
 							RoundedRectangle(cornerRadius: 40)
-								.stroke(buttonColor, lineWidth: 5)
+								.stroke(btn.buttonColor, lineWidth: 5)
+						)
+						
+						NavigationLink {
+							LeaseCarView()
+						} label: {
+							Text("Leasewagen")
+						}
+						.frame(width: 200)
+						.fontWeight(.bold)
+						.font(.body)
+						.padding()
+						.background(btn.buttonColor)
+						.cornerRadius(40)
+						.foregroundColor(textColor)
+						.padding(10)
+						.overlay(
+							RoundedRectangle(cornerRadius: 40)
+								.stroke(btn.buttonColor, lineWidth: 5)
 						)
                         
                         NavigationLink {
                             InformationView()
                         } label: {
-                            Text("Jaarinfo")
+                            Text("Informatie")
                         }
                         .frame(width: 200)
                         .fontWeight(.bold)
                         .font(.body)
                         .padding()
-                        .background(buttonColor)
+						.background(btn.buttonColor)
                         .cornerRadius(40)
                         .foregroundColor(textColor)
                         .padding(10)
                         .overlay(
                             RoundedRectangle(cornerRadius: 40)
-                                .stroke(buttonColor, lineWidth: 5)
+								.stroke(btn.buttonColor, lineWidth: 5)
                         )
                         
                         Spacer()
                     }
                     
                     /// footer section
-                    VStack {
-                        Text("®Created by KDJ | 2023")
+					VStack(spacing: 30) {
+                        Text("®Created by KDJ - Projects")
                             .foregroundColor(.gray)
                             .font(.system(size: 10))
                             .fontWeight(.bold)
-							.padding(.bottom, 30)
+							.padding(.bottom, 150)
+							.padding(.top, -30)
                     }
                 }
             }

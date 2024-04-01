@@ -23,11 +23,6 @@ struct FreelanceView: View {
     @State private var monthVat = ""
     @State private var grossWithVat = ""
     
-    // Color variables
-    @State private var textColor = Color.blue
-    @State private var buttonColor = Color.blue
-    @State private var textFieldColor = Color.blue
-    
     var body: some View {
         ZStack {
             VStack {
@@ -36,18 +31,25 @@ struct FreelanceView: View {
 					VStack {
                         Text("MAANDBEREKENING")
                             .font(.largeTitle)
-                            .foregroundColor(textColor)
+							.foregroundColor(txt.textColor)
                         Text("FREELANCER")
                             .font(.largeTitle)
-                            .foregroundColor(textColor)
+							.foregroundColor(txt.textColor)
                     }
                 }.padding()
+				
+				HStack {
+					Image(systemName: "eurosign.circle")
+						.resizable()
+						.foregroundColor(.blue)
+						.frame(width: 130, height: 130)
+				}.padding(.bottom, 50)
                 
                 // Input prefered monthly pay
-                HStack {
+                HStack (spacing: -10) {
                     Text("Gewenst maandelijks netto loon:")
                         .font(.body)
-                        .foregroundColor(textColor)
+						.foregroundColor(txt.textColor)
                         .bold()
                         .frame(width: 280, height: 10, alignment: .leading)
                         .padding(.leading, 50)
@@ -55,17 +57,17 @@ struct FreelanceView: View {
                     TextField("", text: $peferedNetSalary)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .keyboardType(.numbersAndPunctuation)
-                        .foregroundColor(textColor)
-                        .border(textFieldColor)
+						.foregroundColor(txt.textColor)
+						.border(txtf.textFieldColor)
                         .frame(width: 65, height: 10, alignment: .center)
                         .padding(.trailing, 50)
                 }.padding()
                 
                 // Input days monthly days work
-                HStack {
+                HStack (spacing: -10) {
                     Text("Aantal werk dagen per maand:")
                         .font(.body)
-                        .foregroundColor(textColor)
+						.foregroundColor(txt.textColor)
                         .bold()
                         .frame(width: 280, height: 10, alignment: .leading)
                         .padding(.leading, 50)
@@ -73,17 +75,17 @@ struct FreelanceView: View {
                     TextField("", text: $daysWorked)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .keyboardType(.numbersAndPunctuation)
-                        .foregroundColor(textColor)
-                        .border(textFieldColor)
+						.foregroundColor(txt.textColor)
+						.border(txtf.textFieldColor)
                         .frame(width: 65, height: 10, alignment: .center)
                         .padding(.trailing, 50)
                 }.padding()
                 
                 // Input fixed monthly fee
-                HStack {
+                HStack (spacing: -10) {
                     Text("Vaste maandelijkse vaste kosten:")
                         .font(.body)
-                        .foregroundColor(textColor)
+						.foregroundColor(txt.textColor)
                         .bold()
                         .frame(width: 280, height: 10, alignment: .leading)
                         .padding(.leading, 50)
@@ -91,8 +93,8 @@ struct FreelanceView: View {
                     TextField("", text: $monthlyFixedFee)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .keyboardType(.numbersAndPunctuation)
-                        .foregroundColor(textColor)
-                        .border(textFieldColor)
+						.foregroundColor(txt.textColor)
+						.border(txtf.textFieldColor)
                         .frame(width: 65, height: 10, alignment: .center)
                         .padding(.trailing, 50)
                 }.padding()
@@ -109,12 +111,12 @@ struct FreelanceView: View {
 						? showAlert.toggle() :  showBottomSheet.toggle()
                     }
                     .font(.largeTitle)
-                    .foregroundColor(textColor)
+					.foregroundColor(txt.textColor)
                     .frame(width: 280, height: 30, alignment: .center)
                     .padding()
                     .background(
                         Capsule()
-                            .stroke(buttonColor, lineWidth: 2.0)
+							.stroke(btn.buttonColor, lineWidth: 2.0)
                     )
                     .alert(isPresented: self.$showAlert) {
                         Alert(title: Text("Error"),
@@ -129,19 +131,20 @@ struct FreelanceView: View {
                                 Text("\(grossWithVat)")
                                     .foregroundColor(.red)
                             } header: {
-                                Text("Maand bedragen")
+                                Text("Maand omzet")
                             }
                             
                             Section {
                                 Text("\(netHourWage)")
                                 Text("\(yearNetHourWage)")
                             } header: {
-                                Text("Uur bedragen")
+                                Text("Uur tarief")
                             }
                         }
                         // .presentationDetents([.large, .medium, .fraction(0.75)])
                         //                        .presentationDetents([.medium])
-                        .presentationDetents([.fraction(0.40)])
+                        .presentationDetents([.fraction(0.45)])
+						.presentationDragIndicator(.visible)
                     })
                 }
                 
@@ -227,19 +230,19 @@ struct FreelanceView: View {
         
         // MARK: Formating bottom sheet outputs
         let formatGrossEarnings = String(format:"%.2f", calculateGrossEarnings)
-        self.grossAmount = "Brutto maand bedrag: \(formatGrossEarnings) €"
+        self.grossAmount = "Brutto omzet: \(formatGrossEarnings) €"
         
         let formatMonthlyVatContribution = String(format:"%.2f", calculateValueAddedTax)
-        self.monthVat = "BTW bedrag per maand: \(formatMonthlyVatContribution) €"
+        self.monthVat = "BTW per maand: \(formatMonthlyVatContribution) €"
         
         let formatMonthlyGrossWithVat = String(format:"%.2f", calculateGrossWageWithVat)
         self.grossWithVat = "Brutto + Btw: \(formatMonthlyGrossWithVat) €"
         
         let formatNetHourlyWage = String(format:"%.2f", calculateHourlyRate)
-        self.netHourWage = "Uurbedrag maand basis: \(formatNetHourlyWage) €"
+        self.netHourWage = "Uurtarief maand basis: \(formatNetHourlyWage) €"
         
         let formatNetYearHourlyWage = String(format:"%.2f", caclulateYearlyHourlyRate)
-        self.yearNetHourWage = "Uurbedrag op jaar basis: \(formatNetYearHourlyWage) €"
+        self.yearNetHourWage = "Uurtarief op jaar basis: \(formatNetYearHourlyWage) €"
     }
 }
 
